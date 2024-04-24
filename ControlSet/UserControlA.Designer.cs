@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox_subFormName = new System.Windows.Forms.GroupBox();
+            this.textBox_Param2 = new System.Windows.Forms.TextBox();
+            this.textBox_Param1 = new System.Windows.Forms.TextBox();
             this.button_ToString = new System.Windows.Forms.Button();
             this.button_DeleteThis = new System.Windows.Forms.Button();
-            this.textBox_Param1 = new System.Windows.Forms.TextBox();
-            this.textBox_Param2 = new System.Windows.Forms.TextBox();
             this.groupBox_subFormName.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +48,22 @@
             this.groupBox_subFormName.TabIndex = 0;
             this.groupBox_subFormName.TabStop = false;
             this.groupBox_subFormName.Text = "subFormName";
+            // 
+            // textBox_Param2
+            // 
+            this.textBox_Param2.Location = new System.Drawing.Point(6, 43);
+            this.textBox_Param2.Name = "textBox_Param2";
+            this.textBox_Param2.Size = new System.Drawing.Size(187, 19);
+            this.textBox_Param2.TabIndex = 2;
+            this.textBox_Param2.TextChanged += new System.EventHandler(this.textBox_Param2_TextChanged);
+            // 
+            // textBox_Param1
+            // 
+            this.textBox_Param1.Location = new System.Drawing.Point(6, 18);
+            this.textBox_Param1.Name = "textBox_Param1";
+            this.textBox_Param1.Size = new System.Drawing.Size(187, 19);
+            this.textBox_Param1.TabIndex = 2;
+            this.textBox_Param1.TextChanged += new System.EventHandler(this.textBox_Param1_TextChanged);
             // 
             // button_ToString
             // 
@@ -68,20 +84,6 @@
             this.button_DeleteThis.Text = "X";
             this.button_DeleteThis.UseVisualStyleBackColor = true;
             this.button_DeleteThis.Click += new System.EventHandler(this.button_DeleteThis_Click);
-            // 
-            // textBox_Param1
-            // 
-            this.textBox_Param1.Location = new System.Drawing.Point(6, 18);
-            this.textBox_Param1.Name = "textBox_Param1";
-            this.textBox_Param1.Size = new System.Drawing.Size(187, 19);
-            this.textBox_Param1.TabIndex = 2;
-            // 
-            // textBox_Param2
-            // 
-            this.textBox_Param2.Location = new System.Drawing.Point(6, 43);
-            this.textBox_Param2.Name = "textBox_Param2";
-            this.textBox_Param2.Size = new System.Drawing.Size(187, 19);
-            this.textBox_Param2.TabIndex = 2;
             // 
             // UserControlA
             // 

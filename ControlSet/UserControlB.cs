@@ -26,6 +26,7 @@ namespace ControlSet
         //===================
         public int ChildIndex { get; set; }
         public Action<int> DeleteThis { get; set; }
+        public Action ControlContentsChanged { get; set; }
 
         string Param1
         {
@@ -100,6 +101,16 @@ namespace ControlSet
         private void button_DeleteThis_Click(object sender, EventArgs e)
         {
             DeleteThis(ChildIndex);
+        }
+
+        private void textBox_Param1_TextChanged(object sender, EventArgs e)
+        {
+            if (ControlContentsChanged != null) ControlContentsChanged();
+        }
+
+        private void textBox_Param2_TextChanged(object sender, EventArgs e)
+        {
+            if (ControlContentsChanged != null) ControlContentsChanged();
         }
     }
 }

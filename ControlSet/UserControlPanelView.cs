@@ -11,7 +11,8 @@ namespace UserControlPanelViewSet
     {
         int ChildIndex { get; set; }
         Action<int> DeleteThis { get; set; }
-        
+        Action ControlContentsChanged { get; set; }
+
         int Top { get; set; }
         int Height { get; set; }
 
@@ -19,6 +20,9 @@ namespace UserControlPanelViewSet
 
         IPanelChildUserControl Clone();
         IPanelChildUserControl New(string Line);
+
+        Control.ControlCollection Controls { get; }
+
     }
 
     class UserControlPanelView
@@ -50,11 +54,14 @@ namespace UserControlPanelViewSet
         private Panel panelView;
         public TextBox textBox;
 
+        public Action ControlContentsChanged;
+
         /// <summary>
         /// CopySourceInstanceList
         /// </summary>
         List<IPanelChildUserControl> userControlForms;
 
+        public Control.ControlCollection Controls { get { return panelView.Controls; } }
 
         //===================
         // Member function
@@ -75,8 +82,9 @@ namespace UserControlPanelViewSet
         {
             userControl.DeleteThis = DeleteThis;
             userControl.Top = panelView.Height;
-            panelView.Height += userControl.Height;
+            userControl.ControlContentsChanged = this.ControlContentsChanged;
 
+            panelView.Height += userControl.Height;
             userControl.ChildIndex = panelView.Controls.Count;
 
             this.panelView.Controls.Add((Control)userControl);
@@ -109,6 +117,8 @@ namespace UserControlPanelViewSet
 
         public void ChildUserControlsCreateFromTextBox()
         {
+            panelView.Controls.Clear();
+            panelView.Height = 0;
             string[] Lines = textBox.Text.Replace("\r\n", "\n").Trim('\n').Split('\n');
             foreach (var Line in Lines)
             {
